@@ -1,0 +1,18 @@
+sudo useradd -m ilonaa -s /bin/bash
+sudo usermod -aG root ilonaa
+su - ilonaa
+mkdir ~/ilonaa_folder
+touch ~/ilonaa_folder/shevchyshyn
+ln -s ~/ilonaa_folder/shevchyshyn ~/ilonaa_folder/shevchyshyn_link
+sudo cp ~/ilonaa_folder/shevchyshyn /shevchyshyn
+sudo chown root:root /shevchyshyn
+sudo chmod 644 /shevchyshyn
+ls -l ~/ilonaa_folder/
+ls -l /shevchyshyn
+
+# Create a bash script to find all users with /bin/bash CLI in a file password.
+nano list_bash_users.sh
+grep '/bin/bash' /etc/passwd > bash_users.txt
+echo "List of users"
+chmod +x list_bash_users.sh
+./list_bash_users.sh
